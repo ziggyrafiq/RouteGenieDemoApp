@@ -1,0 +1,12 @@
+﻿/* ==============================
+   MAIN STYLES
+   ============================== */
+// IMPORT ALL SCSS DIRECTORY FILES IN THIS MAIN.SCSS FILE.
+
+// Import your directories
+@import "0-Helpers/Helpers-Dir";
+@import "1-Plugins/Plugins-Dir";
+@import "2-Base/Base-Dir";
+@import "3-Layouts/Layouts-Dir";
+@import "4-Modules/Modules-Dir";
+@import "5-Templates/Templates-Dir";
