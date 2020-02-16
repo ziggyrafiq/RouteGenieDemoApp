@@ -4,6 +4,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteGenieDemoApp.UI", "RouteGenieDemoApp.UI\RouteGenieDemoApp.UI.csproj", "{A82FC902-8FFB-46E5-B478-F479A1344C27}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788} = {8DF2A56E-C3E1-42EC-8B19-14B6A1077788}
+		{A2D86391-0963-4246-8CDD-EEC82737F105} = {A2D86391-0963-4246-8CDD-EEC82737F105}
+		{3F57F193-7E3F-4373-87F8-3427184CDD82} = {3F57F193-7E3F-4373-87F8-3427184CDD82}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteGenieDemoApp.Infrastructure", "RouteGenieDemoApp.Infrastructure\RouteGenieDemoApp.Infrastructure.csproj", "{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteGenieDemoApp.Business", "RouteGenieDemoApp.Business\RouteGenieDemoApp.Business.csproj", "{3F57F193-7E3F-4373-87F8-3427184CDD82}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788} = {8DF2A56E-C3E1-42EC-8B19-14B6A1077788}
+		{A2D86391-0963-4246-8CDD-EEC82737F105} = {A2D86391-0963-4246-8CDD-EEC82737F105}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RouteGenieDemoApp.Resources", "RouteGenieDemoApp.Resources\RouteGenieDemoApp.Resources.csproj", "{A2D86391-0963-4246-8CDD-EEC82737F105}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5D34F2C0-F4EB-4A19-8952-DA6F3F2F7D19}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +36,18 @@ Global
 		{A82FC902-8FFB-46E5-B478-F479A1344C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A82FC902-8FFB-46E5-B478-F479A1344C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A82FC902-8FFB-46E5-B478-F479A1344C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F57F193-7E3F-4373-87F8-3427184CDD82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F57F193-7E3F-4373-87F8-3427184CDD82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F57F193-7E3F-4373-87F8-3427184CDD82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F57F193-7E3F-4373-87F8-3427184CDD82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2D86391-0963-4246-8CDD-EEC82737F105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2D86391-0963-4246-8CDD-EEC82737F105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2D86391-0963-4246-8CDD-EEC82737F105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2D86391-0963-4246-8CDD-EEC82737F105}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
