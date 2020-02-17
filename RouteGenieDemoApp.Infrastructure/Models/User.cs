@@ -16,7 +16,7 @@ namespace RouteGenieDemoApp.Infrastructure.Models
         public Guid UserID { get; set; }
 
         [ForeignKey("Role")]
-        public Guid RoleId { get; set; }
+        public Guid RoleID { get; set; }
 
 
        
@@ -42,6 +42,6 @@ namespace RouteGenieDemoApp.Infrastructure.Models
 
         public bool IsActive { get; set; }
 
-        public virtual Role Roles { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

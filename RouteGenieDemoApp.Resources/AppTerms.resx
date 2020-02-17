@@ -120,10 +120,22 @@
   <data name="AppName" xml:space="preserve">
     <value>Route Genie Demo Application</value>
   </data>
+  <data name="IncludePropertyRole" xml:space="preserve">
+    <value>Role</value>
+  </data>
   <data name="LoginPassword" xml:space="preserve">
     <value>Password:</value>
   </data>
   <data name="LoginUsername" xml:space="preserve">
     <value>Username:</value>
+  </data>
+  <data name="UserRoleAdmin" xml:space="preserve">
+    <value>Admin</value>
+  </data>
+  <data name="UserRoleMaster" xml:space="preserve">
+    <value>Master Admin</value>
+  </data>
+  <data name="UserRoleStandard" xml:space="preserve">
+    <value>User</value>
   </data>
 </root>

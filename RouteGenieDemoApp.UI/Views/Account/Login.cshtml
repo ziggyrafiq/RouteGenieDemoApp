@@ -1,0 +1,76 @@
+﻿@model RouteGenieDemoApp.Infrastructure.ViewModels.LoginData
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<div class="row">
+ 
+    <div class="col-md-6">
+        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+        {
+            <div class="form-group">
+                <h2>Login</h2>
+
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+
+
+                <span class="text-danger">@Html.ValidationMessage(" Error")</span>
+
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="Username"><b>Username:</b></label>
+
+                    </div>
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter your username here....", onfocus = "" })
+                        @Html.ValidationMessageFor(m => m.Username)
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2">
+                        <label for="pwd"><b>Password:</b></label>
+
+                    </div>
+                    <div class="col-md-10">
+                        @Html.PasswordFor(m=>m.Password, new { @class = "form-control", placeholder = "Enter your password here...." })
+                        
+                        @Html.ValidationMessageFor(m => m.Password)
+
+                    </div>
+                </div>
+
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+
+
+                </div>
+                <div class="col-md-10">
+                    <button type="submit" class="btn btn-primary">Login</button>
+
+                </div>
+            </div>
+
+        }
+    </div>
+   
+</div>

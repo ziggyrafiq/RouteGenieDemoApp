@@ -1,4 +1,5 @@
 ﻿using RouteGenieDemoApp.Infrastructure.Entity;
+using RouteGenieDemoApp.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -35,7 +36,8 @@ namespace RouteGenieDemoApp.Infrastructure
         public string Username { get; private set; }
 
 
-
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
         public static DbEntities Create()
         {
             return new DbEntities(null);
@@ -74,13 +76,6 @@ namespace RouteGenieDemoApp.Infrastructure
         {
             foreach (var change in ChangeTracker.Entries<EntityBase>())
             {
-                if (String.IsNullOrEmpty(Username))
-                {
-                    Username = "Ziggy Rafiq System Generated";
-
-                }
-
-
                 if (change.State == EntityState.Added)
                 {
                     change.Entity.CreatedDate = DateTime.Now;

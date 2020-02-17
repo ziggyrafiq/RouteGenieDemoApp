@@ -70,6 +70,15 @@ namespace RouteGenieDemoApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        public static string IncludePropertyRole {
+            get {
+                return ResourceManager.GetString("IncludePropertyRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password:.
         /// </summary>
         public static string LoginPassword {
@@ -84,6 +93,33 @@ namespace RouteGenieDemoApp.Resources {
         public static string LoginUsername {
             get {
                 return ResourceManager.GetString("LoginUsername", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin.
+        /// </summary>
+        public static string UserRoleAdmin {
+            get {
+                return ResourceManager.GetString("UserRoleAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Master Admin.
+        /// </summary>
+        public static string UserRoleMaster {
+            get {
+                return ResourceManager.GetString("UserRoleMaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        public static string UserRoleStandard {
+            get {
+                return ResourceManager.GetString("UserRoleStandard", resourceCulture);
             }
         }
     }

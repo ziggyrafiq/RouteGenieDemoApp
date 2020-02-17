@@ -56,6 +56,11 @@
     <Compile Include="Entity\EntityBase.cs" />
     <Compile Include="Entity\IEntityBase.cs" />
     <Compile Include="GenericRepository.cs" />
+    <Compile Include="Migrations\202002171549059_BuildDevDatabase.cs" />
+    <Compile Include="Migrations\202002171549059_BuildDevDatabase.designer.cs">
+      <DependentUpon>202002171549059_BuildDevDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -68,6 +73,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Enums\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202002171549059_BuildDevDatabase.resx">
+      <DependentUpon>202002171549059_BuildDevDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RouteGenieDemoApp.Resources\RouteGenieDemoApp.Resources.csproj">
+      <Project>{A2D86391-0963-4246-8CDD-EEC82737F105}</Project>
+      <Name>RouteGenieDemoApp.Resources</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

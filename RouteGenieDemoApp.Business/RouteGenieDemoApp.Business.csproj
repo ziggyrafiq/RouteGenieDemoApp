@@ -80,8 +80,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Cryptographer.cs" />
     <Compile Include="Services\Interfaces\IService.cs" />
+    <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\ServiceFactory.cs" />
     <Compile Include="Services\ServiceManager.cs" />
+    <Compile Include="Services\UserService.cs" />
     <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +93,10 @@
     <ProjectReference Include="..\RouteGenieDemoApp.Infrastructure\RouteGenieDemoApp.Infrastructure.csproj">
       <Project>{8DF2A56E-C3E1-42EC-8B19-14B6A1077788}</Project>
       <Name>RouteGenieDemoApp.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RouteGenieDemoApp.Resources\RouteGenieDemoApp.Resources.csproj">
+      <Project>{A2D86391-0963-4246-8CDD-EEC82737F105}</Project>
+      <Name>RouteGenieDemoApp.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

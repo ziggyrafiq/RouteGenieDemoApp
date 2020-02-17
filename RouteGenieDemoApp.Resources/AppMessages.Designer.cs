@@ -68,5 +68,59 @@ namespace RouteGenieDemoApp.Resources {
                 return ResourceManager.GetString("AppMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to something went very wrong!.
+        /// </summary>
+        public static string StandardError {
+            get {
+                return ResourceManager.GetString("StandardError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username or Password is incorrect. Please try again..
+        /// </summary>
+        public static string UserLoginError {
+            get {
+                return ResourceManager.GetString("UserLoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No user found with these details..
+        /// </summary>
+        public static string UserLoginForgotDetailsError {
+            get {
+                return ResourceManager.GetString("UserLoginForgotDetailsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Admin User is a standard Admin User permission who can do any admin based activities, such as add Use, change user permissions.
+        /// </summary>
+        public static string UserRoleAdmin {
+            get {
+                return ResourceManager.GetString("UserRoleAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Master Admin role is for any user who has been given highest permission. Its like God User Permission.
+        /// </summary>
+        public static string UserRoleMaster {
+            get {
+                return ResourceManager.GetString("UserRoleMaster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The User role is a standard User of this sytem the role is given to any user who is just a standard User.
+        /// </summary>
+        public static string UserRoleStandard {
+            get {
+                return ResourceManager.GetString("UserRoleStandard", resourceCulture);
+            }
+        }
     }
 }
