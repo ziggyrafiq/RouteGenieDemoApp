@@ -7,9 +7,8 @@ using RouteGenieDemoApp.Infrastructure.Entity;
 
 namespace RouteGenieDemoApp.Infrastructure
 {
-    public class UnitOfWork : IDisposable
+       public class UnitOfWork : IDisposable
     {
-        private DbEntities _Context;
         private string _Username;
 
         #region -- Constructor(s) --
@@ -18,7 +17,7 @@ namespace RouteGenieDemoApp.Infrastructure
         {
             try
             {
-                _Context = new DbEntities(username);
+                Context = new DbEntities(username);
                 _Username = username;
             }
             catch (Exception ex)
@@ -27,22 +26,19 @@ namespace RouteGenieDemoApp.Infrastructure
             }
         }
 
-        public DbEntities Context
-        {
-            get { return _Context; }
-        }
+        public DbEntities Context { get; private set; }
 
         public void RefreshConnection()
         {
-            _Context.Dispose();
-            _Context = new DbEntities(_Username);
+            Context.Dispose();
+            Context = new DbEntities(_Username);
         }
 
         #endregion
 
 
 
-
+        
         #region --  Unfiltered Repositoires  --
 
         public Dictionary<Type, object> _Repositories = new Dictionary<Type, object>();
@@ -51,7 +47,7 @@ namespace RouteGenieDemoApp.Infrastructure
             // Check to see if we have a constructor for the given type
             if (!_Repositories.ContainsKey(typeof(TEntity)))
             {
-                _Repositories.Add(typeof(TEntity), new GenericRepository<TEntity>(_Context, o => o.IsDeleted == false));
+                _Repositories.Add(typeof(TEntity), new GenericRepository<TEntity>(Context, o => o.IsDeleted == false));
             }
             return _Repositories[typeof(TEntity)] as GenericRepository<TEntity>;
         }
@@ -62,43 +58,43 @@ namespace RouteGenieDemoApp.Infrastructure
 
         public List<T> GetListWithRawSql<T>(string sql, params object[] parameters)
         {
-            return _Context.Database.SqlQuery<T>(sql, parameters).ToList();
+            return Context.Database.SqlQuery<T>(sql, parameters).ToList();
         }
 
         public T GetSingleWithRawSql<T>(string sql, params object[] parameters)
         {
-            return _Context.Database.SqlQuery<T>(sql, parameters).FirstOrDefault();
+            return Context.Database.SqlQuery<T>(sql, parameters).FirstOrDefault();
         }
 
         public void ExecuteRawSql(string sql, params object[] parameters)
         {
-            _Context.Database.ExecuteSqlCommand(sql, parameters);
+            Context.Database.ExecuteSqlCommand(sql, parameters);
         }
 
         #endregion
 
         public void Save()
         {
-            _Context.SaveChanges();
+            Context.SaveChanges();
         }
 
         public async Task SaveAsync()
         {
-            await _Context.SaveChangesAsync();
+            await Context.SaveChangesAsync();
         }
 
-        private bool _Disposed = false;
+        private bool disposed = false;
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!this._Disposed)
+            if (!this.disposed)
             {
-                if (disposing && _Context != null)
+                if (disposing && Context != null)
                 {
-                    _Context.Dispose();
+                    Context.Dispose();
                 }
             }
-            this._Disposed = true;
+            this.disposed = true;
         }
 
         public void Dispose()

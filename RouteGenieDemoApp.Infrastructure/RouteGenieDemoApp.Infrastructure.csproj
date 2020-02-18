@@ -60,9 +60,19 @@
     <Compile Include="Migrations\202002171549059_BuildDevDatabase.designer.cs">
       <DependentUpon>202002171549059_BuildDevDatabase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202002182139061_AddedCustomerAndVehicleDataModels.cs" />
+    <Compile Include="Migrations\202002182139061_AddedCustomerAndVehicleDataModels.designer.cs">
+      <DependentUpon>202002182139061_AddedCustomerAndVehicleDataModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202002182140459_AddedCustomerAndVehicleDataModels1.cs" />
+    <Compile Include="Migrations\202002182140459_AddedCustomerAndVehicleDataModels1.designer.cs">
+      <DependentUpon>202002182140459_AddedCustomerAndVehicleDataModels1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\Vehicle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitOfWork.cs" />
     <Compile Include="ViewModels\LoginData.cs" />
@@ -77,6 +87,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202002171549059_BuildDevDatabase.resx">
       <DependentUpon>202002171549059_BuildDevDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002182139061_AddedCustomerAndVehicleDataModels.resx">
+      <DependentUpon>202002182139061_AddedCustomerAndVehicleDataModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202002182140459_AddedCustomerAndVehicleDataModels1.resx">
+      <DependentUpon>202002182140459_AddedCustomerAndVehicleDataModels1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

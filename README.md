@@ -4,7 +4,22 @@ The Route Genie Demo App is Web-based application, which I have designed and dev
 ## Author
 * <b>Name: Zaheer Rafiq (Ziggy)</b>
 * <b>Website: https://www.ziggyrafiq.com </b>
-*
+
+## Deployed Version
+The Route Genie Demo App is deployed on the following URL Address: https://routegenie.ziggyrafiq.com
+and the User Login Detials are
+
+* <b>Master Admin User</b><br>
+Username: master@ziggyrafiq.com<br>
+Password: Password123!
+
+* <b>Admin User</b><br>
+Username: admin@ziggyrafiq.com<br>
+Password: Password123!
+
+* <b>Standard User</b><br>
+Username: user@ziggyrafiq.com<br>
+Password: Password123!
 
 ## Prerequisites
 [Need to write What things you need to install the software and how to install them]

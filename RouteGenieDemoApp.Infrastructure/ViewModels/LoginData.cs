@@ -10,7 +10,7 @@ namespace RouteGenieDemoApp.Infrastructure.ViewModels
     public class LoginData
     {
         [Required]
-        [Display(Name = "Username")]
+        [Display(Name = "Email Address")]
         public string Username { get; set; }
 
         [Required]

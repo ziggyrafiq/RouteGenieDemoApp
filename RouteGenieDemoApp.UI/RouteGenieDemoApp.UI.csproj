@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -55,6 +56,12 @@
     </Reference>
     <Reference Include="Castle.Windsor.Mvc, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Castle.Windsor.Mvc.1.3.0.0\lib\net45\Castle.Windsor.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -139,7 +146,10 @@
     <Compile Include="App_Start\ServiceInstaller.cs" />
     <Compile Include="App_Start\WindsorActivator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Extensions\BaseAdminController.cs" />
     <Compile Include="Extensions\BaseSiteController.cs" />
     <Compile Include="Global.asax.cs">
@@ -151,8 +161,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Scripts\Js\app-script.js" />
-    <Content Include="App_Scripts\Js\_global.js" />
+    <Content Include="App_Dev_Assets\Js\app-script.js" />
+    <Content Include="App_Dev_Assets\Js\_global.js" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
@@ -6473,36 +6483,35 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="App_Scripts\Scss\app-style.scss" />
-    <Content Include="App_Scripts\Scss\0-Helpers\_Functions.scss" />
-    <Content Include="App_Scripts\Scss\0-Helpers\_Helpers-Dir.scss" />
-    <Content Include="App_Scripts\Scss\0-Helpers\_Mixins.scss" />
-    <Content Include="App_Scripts\Scss\0-Helpers\_Variables.scss" />
-    <Content Include="App_Scripts\Scss\1-Plugins\_Plugins-Dir.scss" />
-    <Content Include="App_Scripts\Scss\2-Base\_Base-Dir.scss" />
-    <Content Include="App_Scripts\Scss\2-Base\_Global.scss" />
-    <Content Include="App_Scripts\Scss\2-Base\_Reset.scss" />
-    <Content Include="App_Scripts\Scss\2-Base\_Typography.scss" />
-    <Content Include="App_Scripts\Scss\3-Layouts\_Footer.scss" />
-    <Content Include="App_Scripts\Scss\3-Layouts\_Layouts-Dir.scss" />
-    <Content Include="App_Scripts\Scss\3-Layouts\_Navigation.scss" />
-    <Content Include="App_Scripts\Scss\3-Layouts\_Site-Header.scss" />
-    <Content Include="App_Scripts\Scss\3-Layouts\_Site-Main-Content.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Banner-Ios-Android.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Call-To-Action.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Feature-Statement.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Hero-Image.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Modules-Dir.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Two-Column.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Value-List.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Video.scss" />
-    <Content Include="App_Scripts\Scss\4-Modules\_Widget.scss" />
-    <Content Include="App_Scripts\Scss\5-Templates\_Home.scss" />
-    <Content Include="App_Scripts\Scss\5-Templates\_Contact.scss" />
-    <Content Include="App_Scripts\Scss\5-Templates\_About.scss" />
-    <Content Include="App_Scripts\Scss\5-Templates\_Templates-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\app-style.scss" />
+    <Content Include="App_Dev_Assets\Scss\0-Helpers\_Functions.scss" />
+    <Content Include="App_Dev_Assets\Scss\0-Helpers\_Helpers-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\0-Helpers\_Mixins.scss" />
+    <Content Include="App_Dev_Assets\Scss\0-Helpers\_Variables.scss" />
+    <Content Include="App_Dev_Assets\Scss\1-Plugins\_Plugins-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\2-Base\_Base-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\2-Base\_Global.scss" />
+    <Content Include="App_Dev_Assets\Scss\2-Base\_Reset.scss" />
+    <Content Include="App_Dev_Assets\Scss\2-Base\_Typography.scss" />
+    <Content Include="App_Dev_Assets\Scss\3-Layouts\_Footer.scss" />
+    <Content Include="App_Dev_Assets\Scss\3-Layouts\_Layouts-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\3-Layouts\_Navigation.scss" />
+    <Content Include="App_Dev_Assets\Scss\3-Layouts\_Site-Header.scss" />
+    <Content Include="App_Dev_Assets\Scss\3-Layouts\_Site-Main-Content.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Banner-Ios-Android.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Call-To-Action.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Feature-Statement.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Hero-Image.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Modules-Dir.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Two-Column.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Value-List.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Video.scss" />
+    <Content Include="App_Dev_Assets\Scss\4-Modules\_Widget.scss" />
+    <Content Include="App_Dev_Assets\Scss\5-Templates\_Home.scss" />
+    <Content Include="App_Dev_Assets\Scss\5-Templates\_Contact.scss" />
+    <Content Include="App_Dev_Assets\Scss\5-Templates\_About.scss" />
+    <Content Include="App_Dev_Assets\Scss\5-Templates\_Templates-Dir.scss" />
     <Content Include="package.json" />
-    <Content Include="Content\app-style.css.map" />
     <Content Include="node_modules\%40gulp-sourcemaps\identity-map\LICENSE" />
     <Content Include="node_modules\%40gulp-sourcemaps\identity-map\package.json" />
     <Content Include="node_modules\%40gulp-sourcemaps\identity-map\README.md" />
@@ -9437,9 +9446,27 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Add.cshtml" />
+    <Content Include="Views\Customer\Delete.cshtml" />
+    <Content Include="Views\Customer\Update.cshtml" />
+    <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\User\Detail.cshtml" />
+    <Content Include="Views\Vehicle\Detail.cshtml" />
+    <Content Include="Views\Vehicle\Add.cshtml" />
+    <Content Include="Views\User\Add.cshtml" />
+    <Content Include="Views\User\Delete.cshtml" />
+    <Content Include="Views\Vehicle\Delete.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Vehicle\Index.cshtml" />
+    <Content Include="Views\Vehicle\Update.cshtml" />
+    <Content Include="Views\User\Update.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="App_Dev_Assets\Images\" />
+    <Folder Include="Content\Images\" />
     <Folder Include="Models\" />
     <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
@@ -9575,7 +9602,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

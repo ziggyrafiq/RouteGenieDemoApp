@@ -4,73 +4,43 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Login</h2>
 
+<div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
 <div class="row">
- 
-    <div class="col-md-6">
-        @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
-        {
-            <div class="form-group">
-                <h2>Login</h2>
-
-                @Html.AntiForgeryToken()
-                @Html.ValidationSummary(true)
-
-
-                <span class="text-danger">@Html.ValidationMessage(" Error")</span>
+    <div class="col-md-2"></div>
+    <div class="col-md-6 bg-light rounded">
+        <div class="row">
+            <div id="loginImg" class="col-md-7  rounded ">
 
             </div>
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="Username"><b>Username:</b></label>
-
+            <div class="col-md-4 p-1">
+                @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl }))
+                {
+                    <div class="form-group">
+                        <h3 class="text-dark">Sign In</h3>
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true)
+                        <span class="text-danger">@Html.ValidationMessage("LoginSystemError")</span>
                     </div>
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control", placeholder = "Enter your username here....", onfocus = "" })
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Username)
+                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control col-md-12", placeholder = "Enter your username here....", onfocus = "" })
                         @Html.ValidationMessageFor(m => m.Username)
 
-                    </div>
-                </div>
-
-
-
-
-
-            </div>
-
-
-            <div class="form-group">
-                <div class="row">
-                    <div class="col-md-2">
-                        <label for="pwd"><b>Password:</b></label>
 
                     </div>
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m=>m.Password, new { @class = "form-control", placeholder = "Enter your password here...." })
-                        
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Password)
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control col-md-12", placeholder = "Enter your password here...." })
+
                         @Html.ValidationMessageFor(m => m.Password)
-
                     </div>
-                </div>
-
-
-
+                    <button type="submit" class="btn btn-dark">Sign In</button>
+                    
+                }
             </div>
-            <div class="row">
-                <div class="col-md-2">
-
-
-                </div>
-                <div class="col-md-10">
-                    <button type="submit" class="btn btn-primary">Login</button>
-
-                </div>
-            </div>
-
-        }
+        </div>
     </div>
-   
+    <div class="col-md-2"></div>
 </div>
+ 

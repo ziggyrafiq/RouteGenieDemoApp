@@ -15,7 +15,7 @@ namespace RouteGenieDemoApp.Business.Services
         static Dictionary<Type, Func<User, UnitOfWork, IService>> _Services =
             new Dictionary<Type, Func<User, UnitOfWork, IService>> {
   
-                //{ typeof(IUserService), (user, uow) => { return new UserService(user, uow); } },
+                { typeof(IUserService), (user, uow) => { return new UserService(user, uow); } },
 
             };
 

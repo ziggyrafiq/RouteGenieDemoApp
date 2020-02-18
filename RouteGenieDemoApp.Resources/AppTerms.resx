@@ -120,6 +120,9 @@
   <data name="AppName" xml:space="preserve">
     <value>Route Genie Demo Application</value>
   </data>
+  <data name="AppOwner" xml:space="preserve">
+    <value>Ziggy Rafiq</value>
+  </data>
   <data name="IncludePropertyRole" xml:space="preserve">
     <value>Role</value>
   </data>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RouteGenieDemoApp.UI.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,8 @@ using System.Web.Mvc;
 
 namespace RouteGenieDemoApp.UI.Controllers
 {
-    public class HomeController : Controller
+    [Authorize]
+    public class HomeController : BaseAdminController
     {
         public ActionResult Index()
         {

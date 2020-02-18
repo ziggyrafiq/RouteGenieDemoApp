@@ -70,6 +70,15 @@ namespace RouteGenieDemoApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ziggy Rafiq.
+        /// </summary>
+        public static string AppOwner {
+            get {
+                return ResourceManager.GetString("AppOwner", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Role.
         /// </summary>
         public static string IncludePropertyRole {

@@ -27,7 +27,7 @@ namespace RouteGenieDemoApp.UI
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/app-site.css"));
+                      "~/Content/app-style.css"));
         }
     }
 }

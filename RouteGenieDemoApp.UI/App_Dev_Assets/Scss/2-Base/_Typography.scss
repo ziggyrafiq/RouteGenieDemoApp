@@ -1,0 +1,25 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Anton|Odibee+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:600&display=swap');
+
+
+
+
+h1 {
+    font-family: $main-font;
+    font-size: $main-size;
+}
+h2 {
+    font-family: $secondary-font;
+    font-size: $secondary-size;
+}
+
+h3 {
+    font-family: $primary-font;
+    font-size: $standard-size;
+}
+
+p {
+    font-family: $primary-font;
+    font-size: $standard-size;
+}

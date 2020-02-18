@@ -1,0 +1,36 @@
+﻿
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("Logout", "Account", new { area = "" }, FormMethod.Post, new { id = "logoutForm" }))
+    {
+        <nav class="navbar navbar-expand-md bg-dark justify-content-center navbar-dark">
+
+
+            @Html.AntiForgeryToken()
+            <div class="container">
+                @Html.ActionLink("Route Genie", "Index", "Home", new { area = "" }, new { @class = "navbar-brand d-flex w-50 mr-auto" })
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+
+                    <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                        <li class="nav-item">
+                            @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("About Us", "About", "Home", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Contact Us", "Contact", "Home", new { @class = "nav-link" })
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Sign Out</a>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    }
+}

@@ -15,6 +15,7 @@ namespace RouteGenieDemoApp.UI.Controllers
     {
         private CustomMembershipProvider _Provider = (CustomMembershipProvider)System.Web.Security.Membership.Provider;
         // GET: Account
+        [Authorize]
         public ActionResult Index()
         {
             return RedirectToAction("Login");
@@ -33,31 +34,48 @@ namespace RouteGenieDemoApp.UI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginData model, string returnUrl)
         {
-            //if (ValidateLogOn(model.Username, model.Password))
-            //{
-
             if (ModelState.IsValid)
             {
-                if (ValidateLogOn(model.Username, model.Password)==true)
+                if (ValidateLogOn(model.Username, model.Password))
                 {
-
-
                     User user = _Provider.User;
                     Security.FormsAuthentication.SetAuthCookie(user.Email, true);
                     Role roles = new Role();
                     Response.Cookies.Add(new HttpCookie("UserGUID", user.UserID.ToString()));
 
-                    //Need to check what role does User have and then direct them to their area based off user roles
-
-
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    // If we got this far, something failed, redisplay form
                     ModelState.AddModelError("", "The user name or password provided is incorrect. ZIGGY");
                 }
-
             }
+
+            //if (ValidateLogOn(model.Username, model.Password))
+            //{
+
+            //if (ModelState.IsValid)
+            //{
+            //    if (ValidateLogOn(model.Username, model.Password)==true)
+            //    {
+
+
+            //        User user = _Provider.User;
+            //        Security.FormsAuthentication.SetAuthCookie(user.Email, true);
+            //        Role roles = new Role();
+            //        Response.Cookies.Add(new HttpCookie("UserGUID", user.UserID.ToString()));
+
+            //        //Need to check what role does User have and then direct them to their area based off user roles
+
+
+            //    }
+            //    else
+            //    {
+            //        // If we got this far, something failed, redisplay form
+            //        ModelState.AddModelError("", "The user name or password provided is incorrect. ZIGGY");
+            //    }
+
+            //}
 
 
 
@@ -65,16 +83,32 @@ namespace RouteGenieDemoApp.UI.Controllers
         }
 
 
-        //ZR if have time do this 
+        [Authorize]
         public ActionResult Logout()
         {
-            //FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+           Security.FormsAuthentication.SignOut();
+            System.Web.Security.FormsAuthentication.SignOut();
+
+            if (Request.Cookies["UserGUID"] != null)
+            {
+                var c = new HttpCookie("UserGUID");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetExpires(DateTime.UtcNow.AddHours(-1));
+            Response.Cache.SetNoStore();
+            Session.Clear();
+            Session.RemoveAll();
+            Session.Abandon();
+
+            return RedirectToAction("Login");
         }
 
 
-       
-       private bool ValidateLogOn(string userName, string password)
+
+        private bool ValidateLogOn(string userName, string password)
        {
            if (String.IsNullOrEmpty(userName))
            {
@@ -86,7 +120,7 @@ namespace RouteGenieDemoApp.UI.Controllers
            }
            if (!_Provider.ValidateUser(userName, password))
            {
-               ModelState.AddModelError("_FORM", "The username or password provided is incorrect.");
+               ModelState.AddModelError("LoginSystemError", "The username or password provided is incorrect.");
            }
 
            return ModelState.IsValid;

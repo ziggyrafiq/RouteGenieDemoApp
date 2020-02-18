@@ -24,8 +24,7 @@ namespace RouteGenieDemoApp.Infrastructure
 
         public DbEntities(string username) : base(_developmentConnectionString)
         {
-          //  Database.SetInitializer<DbEntities>(new MigrateDatabaseToLatestVersion<DbEntities, FS.Portal.Infrastructure.Migrations.Configuration>());
-
+           Database.SetInitializer<DbEntities>(new MigrateDatabaseToLatestVersion<DbEntities, RouteGenieDemoApp.Infrastructure.Migrations.Configuration>());
             var objectContextAdapter = this as IObjectContextAdapter;
             objectContextAdapter.ObjectContext.ContextOptions.UseCSharpNullComparisonBehavior = true;
 
@@ -38,6 +37,9 @@ namespace RouteGenieDemoApp.Infrastructure
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+
+        public DbSet<Vehicle> Vehicles { get; set; }
         public static DbEntities Create()
         {
             return new DbEntities(null);
@@ -76,6 +78,12 @@ namespace RouteGenieDemoApp.Infrastructure
         {
             foreach (var change in ChangeTracker.Entries<EntityBase>())
             {
+                if (String.IsNullOrEmpty(Username))
+                {
+                    Username = "Ziggy Rafiq System Generated";
+
+                }
+
                 if (change.State == EntityState.Added)
                 {
                     change.Entity.CreatedDate = DateTime.Now;

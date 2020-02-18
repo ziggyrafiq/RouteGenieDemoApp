@@ -1,2 +1,49 @@
+/* ==============================
+   MAIN STYLES
+   ============================== */
+/* ==============================
+   HELPERS STYLES
+   ============================== */
+/* ==============================
+   BASE STYLES
+   ============================== */
+@import url("https://fonts.googleapis.com/css?family=Anton|Odibee+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Inconsolata&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato:700|Open+Sans:600&display=swap");
+* {
+  padding: 0px;
+  margin: 0px; }
 
-/*# sourceMappingURL=app-style.css.map */
+h1 {
+  font-family: "Lato", sans-serif;
+  font-size: 22px; }
+
+h2 {
+  font-family: "Odibee Sans", cursive;
+  font-size: 16px; }
+
+h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px; }
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px; }
+
+/* ==============================
+   LAYOUTS STYLES
+   ============================== */
+body {
+  background-image: url("../Content/Images/bg.png");
+  background-repeat: repeat-x;
+  color: #000000;
+  font-family: "Inconsolata", monospace;
+  font-size: 14px; }
+
+/* ==============================
+   TEMPLATES STYLES
+   ============================== */
+#loginImg {
+  background-image: url("../Content/Images/zr-demo-login-img-2.png");
+  background-repeat: no-repeat;
+  background-size: auto; }
