@@ -1,0 +1,222 @@
+﻿@model RouteGenieDemoApp.Infrastructure.ViewModels.CustomerWithVehicleData
+@{
+    ViewBag.Title = "CustomerWithVehicle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+    @*<style>
+        .datepicker {
+            /* Appended to body, abs-pos off the page */
+            position: absolute;
+            display: none;
+            top: -9999em;
+            left: -9999em;
+            width:300px;
+        }
+        .table-condensed{
+            width:300px;
+           
+        }
+    </style>*@
+ 
+@section scripts {
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $(function () {
+                $("#DateOfBirth").datepicker({
+                   format: 'dd/mm/yyyy',
+                    autoclose: true,
+                    todayHighlight: true,
+                    numberOfMonths: 1,
+
+                    showOn: "both",
+                    buttonText: "<i class='far fa-calendar-alt'></i>",
+                    onSelect: function (date) {
+
+                    }
+
+                })
+            });
+
+ 
+        $(".add-row").click(function(){
+            var RegistrationNumber = $("#RegistrationNumber").val();
+            var Manufacturer = $("#Manufacturer").val();
+            var Model = $("#Model").val();
+            var EngineSize = $("#EngineSize").val();
+            var RegistrationDate = $("#RegistrationDate").val();
+             var InteriorColour = $("#InteriorColour").val();
+           
+            var markup = "<tr><td><input type='checkbox' name='record'></td><td>" + RegistrationNumber + "</td><td>" + Manufacturer + "</td>"+
+                "<td>" + Model + "</td>" +
+                "<td>" + EngineSize + "</td>" +
+                "<td>" + RegistrationDate + "</td>" +
+                "<td>" + InteriorColour + "</td>"+
+            "</tr > ";
+            $("table tbody").append(markup);
+        });
+        
+        // Find and remove selected table rows
+        $(".delete-row").click(function(){
+            $("table tbody").find('input[name="record"]').each(function(){
+            	if($(this).is(":checked")){
+                    $(this).parents("tr").remove();
+                }
+            });
+        });
+    });    
+</script>
+}
+@using (Html.BeginForm("CustomerWithVehicle", "Customer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+    <div class="row">
+        <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+            <h1>Customer Details And With Vehicles <i class='far fa-calendar-alt'></i></h1>
+            <hr />
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+            <div class="form-group">
+                @Html.LabelFor(m => m.Forename, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Forename, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Surname, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control" })
+                </div>
+            </div>
+
+            <!--Vehicle List Table-->
+            <div class="form-row">
+                <div class="col">
+                    @Html.TextBox("RegistrationNumber", null, new { placeholder = "Registration Number", @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("Manufacturer", null, new { placeholder = "Manufacturer", @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("Model", null, new { placeholder = "Model", @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("EngineSize", null, new { placeholder = "EngineSize", @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("RegistrationDate", null, new { placeholder = "RegistrationDate", @class = "form-control" })
+                </div>
+                <div class="col">
+                    @Html.TextBox("InteriorColour", null, new { placeholder = "InteriorColour", @class = "form-control" })
+                </div>
+                <div class="col">
+                    <input type="button" value="Add Vehicle" class="btn btn-primary add-row" />
+                </div>
+            </div>
+         <h1></h1>
+
+
+
+
+         <div class="form-group">
+             <div class="col-md-12">
+                 <table class="table table-condensed table-hover">
+                     <tr>
+                         <th>
+                             Delete
+                         </th>
+                         <th>
+                             Registration Number
+                         </th>
+                         <th>
+                             Manufacturer
+                         </th>
+                         <th>
+                             Model
+                         </th>
+                         <th>
+                             Engine Size
+                         </th>
+                         <th>
+                             Registration Date
+                         </th>
+                         <th>
+                             Interior Colour
+                         </th>
+                     </tr>
+                     @{
+                         //To make unique Id
+                         int i = 0;
+                         foreach (var item in Model.Vehicles.ToList())
+                         {
+
+                             <tr>
+                                 <td><input type="checkbox" name="record"></td>
+                                 <td>
+
+
+                                     @Html.EditorFor(v => v.Vehicles[i].RegistrationNumber, new { @id = "RegistrationNumber_" + i })
+                                 </td>
+                                 <td>
+                                     @Html.EditorFor(v => v.Vehicles[i].Manufacturer, new { @id = "Manufacturer_" + i })
+                                 </td>
+                                 <td>
+                                     @Html.EditorFor(v => v.Vehicles[i].Model, new { @id = "Model_" + i })
+                                 </td>
+                                 <td>
+                                     @Html.EditorFor(v => v.Vehicles[i].EngineSize, new { @id = "EngineSize_" + i })
+                                 </td>
+                                 <td>
+                                     @Html.EditorFor(v => v.Vehicles[i].RegistrationDate, new { @id = "RegistrationDate_" + i })
+                                 </td>
+                                 <td>
+                                     @Html.EditorFor(v => v.Vehicles[i].InteriorColour, new { @id = "InteriorColour_" + i })
+                                 </td>
+                             </tr>
+
+                             i++;
+                         }
+                     }
+                 </table>
+             </div>
+            
+         </div>
+
+
+
+
+         <div class="form-group">
+             <div class="row">
+                 <div class="col-md-offset-2 col-md-4">
+                     <button type="button" class="btn  btn-dark delete-row">Delete Checked Vehicles</button>
+
+                 </div>
+                 <div class="col-md-offset-2 col-md-8 ">
+
+                     <p class="text-right"><input type="submit" class="btn  btn-dark" value="Save Changes" /></p>
+                 </div>
+             </div>
+         </div>
+            </div>
+    </div>
+    <div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+    <div class="row">
+        <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+
+        </div>
+    </div>
+}

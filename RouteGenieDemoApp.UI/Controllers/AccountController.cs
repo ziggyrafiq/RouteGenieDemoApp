@@ -1,4 +1,5 @@
-﻿using RouteGenieDemoApp.Infrastructure.Models;
+﻿using RouteGenieDemoApp.Business.Services.Interfaces;
+using RouteGenieDemoApp.Infrastructure.Models;
 using RouteGenieDemoApp.Infrastructure.ViewModels;
 using RouteGenieDemoApp.UI.Extensions;
 using RouteGenieDemoApp.UI.Membership;
@@ -47,39 +48,11 @@ namespace RouteGenieDemoApp.UI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect. ZIGGY");
+                    ModelState.AddModelError("LoginSystemError", "The user name or password provided is incorrect. ZIGGY");
                 }
             }
 
-            //if (ValidateLogOn(model.Username, model.Password))
-            //{
-
-            //if (ModelState.IsValid)
-            //{
-            //    if (ValidateLogOn(model.Username, model.Password)==true)
-            //    {
-
-
-            //        User user = _Provider.User;
-            //        Security.FormsAuthentication.SetAuthCookie(user.Email, true);
-            //        Role roles = new Role();
-            //        Response.Cookies.Add(new HttpCookie("UserGUID", user.UserID.ToString()));
-
-            //        //Need to check what role does User have and then direct them to their area based off user roles
-
-
-            //    }
-            //    else
-            //    {
-            //        // If we got this far, something failed, redisplay form
-            //        ModelState.AddModelError("", "The user name or password provided is incorrect. ZIGGY");
-            //    }
-
-            //}
-
-
-
-            return View(model);
+          return View(model);
         }
 
 
@@ -107,7 +80,57 @@ namespace RouteGenieDemoApp.UI.Controllers
         }
 
 
+        
+        [AllowAnonymous]
+        public ActionResult Register()
+        {
+            
+            ViewData["Roles"] = new SelectList(Services.Service<IUserService>().GetAllActiveRoles(), "RoleID", "Name"); 
+            return View();
+        }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(RegisterUserData model)
+        {
+
+            
+
+            if (ModelState.IsValid)
+            {
+
+                User userModel = new User();
+                userModel.FirstName = model.FirstName;
+                userModel.LastName = model.LastName;
+                userModel.Email = model.Email;
+                userModel.Password = model.Password;
+                Guid guid = new Guid(model.Roles.ToString());
+                userModel.RoleID = guid;
+                userModel.IsActive = false;
+                userModel.IsDeleted = false;
+
+                Services.Service<IUserService>().Add(userModel);
+                return RedirectToAction("RegisterThanks");
+            }
+
+
+                return View(model);
+        }
+
+        [AllowAnonymous]
+        public ActionResult RegisterThanks()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Forgot()
+        {
+            return View();
+        }
+
+        
         private bool ValidateLogOn(string userName, string password)
        {
            if (String.IsNullOrEmpty(userName))

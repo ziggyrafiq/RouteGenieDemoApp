@@ -5,7 +5,7 @@ namespace RouteGenieDemoApp.UI.App_Start
 {
     public class ContainerBootstrapper : IContainerAccessor, IDisposable
     {
-        readonly IWindsorContainer _Container;
+        private readonly IWindsorContainer _Container;
 
         ContainerBootstrapper(IWindsorContainer container)
         {

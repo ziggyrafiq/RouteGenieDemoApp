@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountCreate" xml:space="preserve">
+    <value>Please note that all of our New Accounts Created need to be verified by Route Genie Administrator Team.</value>
+  </data>
+  <data name="AccountThankYou" xml:space="preserve">
+    <value>Thank you for Registering your detials with Route Genie. One of our Account Administrator Team member will be contacting you via the email you have registered with us. Please note that anyone who is not authorised to use Route Genie System their account will be deleted within 24 hours.</value>
+  </data>
   <data name="AppMessage" xml:space="preserve">
     <value>The Genie Demo App is built using ASP.net MVC with Microsoft.net Framework 4.8</value>
+  </data>
+  <data name="AppNotBuit" xml:space="preserve">
+    <value>Ziggy Rafiq has not built this feature with the current version.</value>
   </data>
   <data name="StandardError" xml:space="preserve">
     <value>something went very wrong!</value>

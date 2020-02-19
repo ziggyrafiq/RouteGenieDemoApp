@@ -4,9 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    <!--FontAwesome Hardwired Need to Add to SASS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
- 
+
 </head>
 <body>
     @Html.Partial("_LoginPartial")
@@ -15,7 +17,10 @@
         @RenderBody()
         <hr />
         <footer>
-            <p class="text-right text-white">&copy; @DateTime.Now.Year - @RouteGenieDemoApp.Resources.AppTerms.AppOwner</p>
+            <p class="text-right text-white">
+                &copy; @DateTime.Now.Year - @RouteGenieDemoApp.Resources.AppTerms.AppOwner<br />
+              Version  @ViewContext.Controller.GetType().Assembly.GetName().Version
+            </p>
         </footer>
     </div>
 

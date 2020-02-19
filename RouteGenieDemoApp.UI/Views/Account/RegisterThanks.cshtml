@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "RegisterThanks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ 
+
+
+<div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+        <h1>Thank You for Registering</h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+          <p>@RouteGenieDemoApp.Resources.AppMessages.AccountThankYou</p>
+        <div class="form-group">
+            @Html.ActionLink("Sign In", "Login", "Account", new { @class = "nav-link" })
+        </div>
+    </div>
+</div>
+<div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+       
+    </div>
+</div>

@@ -1,0 +1,13 @@
+CustomerId,Forename,Surname,DateOfBirth,VehicleId,RegistrationNumber,Manufacturer,Model,EngineSize,RegistationDate,InteriorColour
+1,Joe,Bloggs,08/04/1983,1,BJ07 YUK,Renault,Clio,1290,28/02/2007,Cream
+1,Joe,Bloggs,08/04/1983,7,BJ12 UUY,Renault,Twingo,1190,12/03/2012,Grey
+2,Jane,Doe,04/09/1979,2,BT58 OKJ,Ford,Fiesta,1187,03/10/2008,Black
+3,Bob,Smith,27/10/1992,3,BJ53 WYR,Peugeot,108,987,03/07/2003,Grey
+4,Kate,Jones,09/12/1990,4,BT12 UJJ,Renault,Clio,1190,03/05/2012,Grey
+5,Ann,Banks,10/03/1987,5,BJ16 OIU,Citroen,C3,1298,20/02/2016,Black
+6,Jeff,Hope,19/01/1963,6,BT15 PLM,Renault,Megane,1380,04/04/2015,Cream
+7,Peter,SMith,10/08/1969,7,OW06 TTR,Ford,Focus,1200,02/03/2006,Red
+6,Jeff,Hope,19/01/1963,8,PS12 PLK,Audi,A6,2000,17/09/2012,Black
+6,Jeff,Hope,19/01/1963,9,SE13 CFG,Audi,A1,1610,09/03/2013,Silver
+6,Jeff,Hope,19/01/1963,10,KL16 KMN,Renault,Megane,1380,03/07/2015,White
+6,Jeff,Hope,19/01/1963,11,FD10 MMW,Renault,Megane,1380,28/10/2015,Grey

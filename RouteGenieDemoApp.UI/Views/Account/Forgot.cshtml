@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Forgot";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+        <h1>Forgot User Details</h1>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+        <h3 class="text-danger">@RouteGenieDemoApp.Resources.AppMessages.AppNotBuit</h3>
+        <div class="form-group">
+            <p>Please Click below to return back to Sign In
+                @Html.ActionLink("Sign In", "Login", "Account", new { @class = "nav-link" })
+            </p>
+        </div>
+    </div>
+</div>
+<div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
+<div class="row">
+    <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
+        
+    </div>
+</div>
+
+
+

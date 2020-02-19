@@ -35,16 +35,26 @@ namespace RouteGenieDemoApp.Business.Services
             return _UnitOfWork.Repository<User>().Get(filter: u => u.IsDeleted == false && u.Role.Name != AppTerms.UserRoleMaster && u.Role.Name != AppTerms.UserRoleStandard, includeProperties: AppTerms.IncludePropertyRole).ToList();
         }
 
-        // Get a list of all active users
+        
         public List<User> GetActiveUsers()
         {
             return _UnitOfWork.Repository<User>().Get(filter: u => u.IsDeleted == false && u.Role.Name != AppTerms.UserRoleMaster, includeProperties: AppTerms.IncludePropertyRole).ToList();
         }
 
-        // Get a list of all roles
+         
+        public List<Role> GetAllActiveRoles()
+        {
+            return _UnitOfWork.Repository<Role>().Get(filter: u => u.IsDeleted == false).ToList();
+        }
+
+        public List<Role> GetAllDeletedRoles()
+        {
+            return _UnitOfWork.Repository<Role>().Get(filter: u => u.IsDeleted == true).ToList();
+        }
+
         public List<Role> GetAllRoles()
         {
-            return _UnitOfWork.Repository<Role>().Get(filter: u => u.IsDeleted == false && u.Name != AppTerms.UserRoleMaster).ToList();
+            return _UnitOfWork.Repository<Role>().Get().ToList();
         }
 
         public User GetUserByID(Guid id)
@@ -55,13 +65,20 @@ namespace RouteGenieDemoApp.Business.Services
         // Get a single user by their email address
         public User GetUserByEmail(string email)
         {
-            return _UnitOfWork.Repository<User>().GetSingle(filter: u => u.IsDeleted == false && u.Email == email, includeProperties: AppTerms.IncludePropertyRole);
+            return _UnitOfWork.Repository<User>()
+                    .GetSingle(filter: u => u.IsDeleted == false 
+                    &&u.IsActive==true
+                    && u.Email == email, 
+                    includeProperties: AppTerms.IncludePropertyRole
+                );
         }
 
 
-        public User SendResetPasswordEmail(Guid id)
+
+        //Need to do this feature
+        public User SendResetPasswordEmail(string email)
         {
-            var original = GetUserByID(id);
+            var original = GetUserByEmail(email);
             return original;
         }
         
@@ -69,27 +86,62 @@ namespace RouteGenieDemoApp.Business.Services
         {
             User user = null;
 
-            try
-            {
                 if (string.IsNullOrWhiteSpace(password))
                     return null;
 
                 user = GetUserByEmail(username);
 
+
                 if (user == null)
                     return null;
 
                 string hash = new Cryptographer().HashPassword(password, user.Salt);
-                if (user.Password == hash)
-                    return user;
-            }
-            catch (Exception e)
-            {
-                return null;
-            }
-            return null;
+
+                var validUserQuery = _UnitOfWork.Repository<User>()
+                    .Get()
+                    .Where(u => u.Email == username && u.Password == hash && u.IsActive == true&&u.IsDeleted==false)
+                    .FirstOrDefault();
+
+                return validUserQuery != null ? user : null;
+            
         }
 
+        public User Add(User model)
+        {            
+            Cryptographer cryptographer = new Cryptographer();
+            model.Salt = cryptographer.CreateSalt();
+            model.Password = cryptographer.HashPassword(model.Password, model.Salt);
+
+            _UnitOfWork.Repository<User>().Insert(model);
+            _UnitOfWork.Save();
+            return model;
+        }
+
+
+        public User Update(User model)
+        {
+            var original = GetUserByID(model.UserID);
+
+            if (original != null)
+               original = model;
+                      
+            _UnitOfWork.Repository<User>().Update(original);
+            _UnitOfWork.Save();
+            return model;
+        }
+
+        public void ChangeUserAccountActiveStatus(Guid id)
+        {
+            var dataModel = GetUserByID(id);
+            dataModel.IsActive = dataModel.IsActive ? true : false;
+            Update(dataModel);
+        }
+        public void Delete(Guid id)
+        {
+            var dataModel = GetUserByID(id);
+            dataModel.IsDeleted = true;
+            Update(dataModel);
+        }
 
         public void Dispose()
         {

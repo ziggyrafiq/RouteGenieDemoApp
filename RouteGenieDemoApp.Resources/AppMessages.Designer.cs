@@ -61,11 +61,38 @@ namespace RouteGenieDemoApp.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please note that all of our New Accounts Created need to be verified by Route Genie Administrator Team..
+        /// </summary>
+        public static string AccountCreate {
+            get {
+                return ResourceManager.GetString("AccountCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thank you for Registering your detials with Route Genie. One of our Account Administrator Team member will be contacting you via the email you have registered with us. Please note that anyone who is not authorised to use Route Genie System their account will be deleted within 24 hours..
+        /// </summary>
+        public static string AccountThankYou {
+            get {
+                return ResourceManager.GetString("AccountThankYou", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Genie Demo App is built using ASP.net MVC with Microsoft.net Framework 4.8.
         /// </summary>
         public static string AppMessage {
             get {
                 return ResourceManager.GetString("AppMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ziggy Rafiq has not built this feature with the current version..
+        /// </summary>
+        public static string AppNotBuit {
+            get {
+                return ResourceManager.GetString("AppNotBuit", resourceCulture);
             }
         }
         

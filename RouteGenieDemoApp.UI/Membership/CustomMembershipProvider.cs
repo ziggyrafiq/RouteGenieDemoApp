@@ -204,7 +204,7 @@ namespace RouteGenieDemoApp.UI.Membership
             if (user == null)
                 throw new ArgumentException(AppMessages.UserLoginForgotDetailsError, "email");
 
-            return Services.Service<IUserService>().SendResetPasswordEmail(user.UserID);
+            return Services.Service<IUserService>().SendResetPasswordEmail(user.Email);
         }
     }
 }

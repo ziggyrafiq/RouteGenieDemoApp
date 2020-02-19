@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<RouteGenieDemoApp.Infrastructure.Models.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -13,13 +13,86 @@
 </div>
 <div class="row">
     <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
-        <h1>Welcome @User.Identity.Name</h1>
+        <h1>Important CSV Data</h1>
+
+        <div class="row">
+            @using (Html.BeginForm("Index", "Customer", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <div class="form-group">
+
+                    @Html.Label("File Upload", new { @class = "col-sm-3" })
+
+                    <div class="col-sm-7">
+                        <input type="file" id="postedFile" name="postedFile" class="form-control" accept=".csv" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-offset-3 col-md-10">
+                        <br />
+                        <input type="submit" title="Upload" value="Upload" class="btn btn-danger" />
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-offset-3 col-md-10">
+                        <br />
+                        <span style="color:red;">
+                            @ViewBag.Message
+                        </span>
+                    </div>
+                </div>
+            }
+        </div>
+        <h3>Data from CSV File</h3>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.CustomerID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Forename)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateOfBirth)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.CustomerID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Forename)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        @Convert.ToDateTime(item.DateOfBirth).ToString("dd/MM/yyyy")
+                        @*@Html.DisplayFor(modelItem => item.DateOfBirth.ToShortDateString())*@
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+
+
     </div>
 </div>
 <div class="row"><div class="col-md-12 m-md-2 p-md-2"></div></div>
 <div class="row">
     <div class="col-md-12 bg-white rounded m-md-3 p-md-3">
-        <h1>Welcome @User.Identity.Name</h1>
+         
     </div>
 </div>
 

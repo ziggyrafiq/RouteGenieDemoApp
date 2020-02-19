@@ -10,15 +10,25 @@ namespace RouteGenieDemoApp.UI.App_Start
         public void Install(Castle.Windsor.IWindsorContainer container,
       Castle.MicroKernel.SubSystems.Configuration.IConfigurationStore store)
         {
-            /*container.Register(
+
+            container.Register(
+               Component
+                   .For<ICustomerService>()
+                   .ImplementedBy<CustomerService>()
+                   .LifestyleTransient());
+
+            container.Register(
+               Component
+                   .For<IVehicleService>()
+                   .ImplementedBy<VehicleService>()
+                   .LifestyleTransient());
+
+
+            container.Register(
                Component
                    .For<IUserService>()
                    .ImplementedBy<UserService>()
-                   .LifestyleTransient());*/
-
-
-
-
+                   .LifestyleTransient());
         }
     }
 }

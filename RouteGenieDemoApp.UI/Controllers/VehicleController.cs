@@ -33,7 +33,7 @@ namespace RouteGenieDemoApp.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Add(User model)
+        public ActionResult Add(Vehicle model)
         {
             return View();
         }
@@ -45,7 +45,7 @@ namespace RouteGenieDemoApp.UI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Update(User model)
+        public ActionResult Update(Vehicle model)
         {
             return View();
         }

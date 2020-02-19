@@ -14,7 +14,8 @@ namespace RouteGenieDemoApp.Business.Services
         // List of service constructors accessible from their interface types to cover the DI + IOC
         static Dictionary<Type, Func<User, UnitOfWork, IService>> _Services =
             new Dictionary<Type, Func<User, UnitOfWork, IService>> {
-  
+               { typeof(ICustomerService), (user, uow) => { return new CustomerService(user, uow); } },
+                { typeof(IVehicleService), (user, uow) => { return new VehicleService(user, uow); } },
                 { typeof(IUserService), (user, uow) => { return new UserService(user, uow); } },
 
             };
