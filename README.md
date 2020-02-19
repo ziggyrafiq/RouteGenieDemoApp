@@ -6,7 +6,7 @@ The Route Genie Demo App is Web-based application, which I have designed and dev
 * <b>Website: https://www.ziggyrafiq.com </b>
 
 ## Deployed Version
-The Route Genie Demo App is deployed on the following URL Address: https://routegenie.ziggyrafiq.com
+The Route Genie Demo App is deployed on the following URL Address: https://routegenie.demo.ziggyrafiq.com
 and the User Login Detials are
 
 * <b>Master Admin User</b><br>
